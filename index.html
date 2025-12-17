@@ -21,15 +21,19 @@ body { background:#C7D3FF; color:#111; }
 
 /* ================= HERO ================= */
 .hero {
-  min-height: 100vh;
-  padding: 32px;
+  /* FIX 1: remove forced full viewport height */
+  min-height: auto;
+
+  /* FIX 2: reduce vertical padding only */
+  padding: 16px 32px;
+
   display: flex;
   flex-direction: column;
 }
 
 header {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto; /* FIX 3: prevent vertical auto spacing */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -114,7 +118,10 @@ nav a:hover { color:#000; }
 /* ===== MAIN GRID ===== */
 .main {
   max-width: 1200px;
-  margin: auto;
+
+  /* FIX 4: remove vertical auto-centering */
+  margin: 0 auto;
+
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -178,16 +185,20 @@ nav a:hover { color:#000; }
   font-weight: 900;
   line-height: .9;
 }
-
 /* ================= FEATURES ================= */
 .features {
-  min-height: 80vh;
-  padding: 50px 0px;
+  /* FIX 1: remove forced tall height */
+  min-height: auto;
+
+  /* FIX 2: reduce vertical padding */
+  padding: 30px 0px;
 }
 
 .features-header {
   text-align: center;
-  margin-bottom: 60px;
+
+  /* FIX 3: reduce header gap */
+  margin-bottom: 35px;
 }
 
 .features-header span {
@@ -199,15 +210,15 @@ nav a:hover { color:#000; }
 
 .features-header h2 {
   font-size: 42px;
-  margin-top: 10px;
+  margin-top: 8px; /* slightly reduced */
 }
 
 .features-grid {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto; /* FIX 4: prevent vertical auto spacing */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 50px; /* slightly reduced */
   align-items: center;
 }
 
@@ -249,7 +260,7 @@ nav a:hover { color:#000; }
 
 /* ================= FOOTER ================= */
 .site-footer {
-  padding: 40px 20px;
+  padding: 30px 20px; /* FIX 5: tighter footer spacing */
   text-align: center;
   font-size: 14px;
   opacity: .7;
@@ -262,7 +273,7 @@ nav a:hover { color:#000; }
 
   .main {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 40px; /* FIX 6: reduce mobile gap */
     text-align: center;
   }
 
@@ -270,11 +281,15 @@ nav a:hover { color:#000; }
 
   .features-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px; /* FIX 7: tighter mobile spacing */
   }
 
   .feature-image img {
-    max-height: 240px;
+    max-height: 220px;
+  }
+
+  .features {
+    padding: 25px 0; /* FIX 8: tighter mobile top & bottom */
   }
 }
 /* ================= SHOWCASE SECTION ================= */
