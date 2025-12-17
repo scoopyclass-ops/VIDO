@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimalist Landing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background:#fff; color:#111; }
+
+/* ================= HERO ================= */
+.hero {
+  min-height: 100vh;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* DESKTOP NAV */
+nav {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(0,0,0,.6);
+}
+
+nav a:hover { color:#000; }
+
+/* MOBILE MENU ICON */
+.menu-btn {
+  display: none;
+  width: 32px;
+  height: 22px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+}
+
+/* MOBILE MENU PANEL */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 75%;
+  height: 100vh;
+  background: #fff;
+  padding: 80px 30px;
+  transition: right .3s ease;
+  z-index: 999;
+  box-shadow: -20px 0 40px rgba(0,0,0,.1);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu a {
+  display: block;
+  margin-bottom: 24px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-decoration: none;
+  color: #111;
+}
+
+/* ===== MAIN GRID ===== */
+.main {
+  max-width: 1200px;
+  margin: auto;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  column-gap: 120px;
+}
+
+/* LEFT */
+.left p {
+  max-width: 260px;
+  font-size: 14px;
+  opacity: .85;
+}
+
+.cta {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: 1px solid rgba(0,0,0,.4);
+  background: transparent;
+  color: #000;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.cta:hover { background: rgba(0,0,0,.05); }
+
+/* CENTER */
+.center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  background: rgba(234,179,8,.9);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.hero-img {
+  width: 220px;
+  z-index: 2;
+  transform: scale(1.2);
+  transition: opacity .5s ease;
+}
+
+/* RIGHT */
+.right {
+  margin-left: 40px;
+  z-index: 3;
+}
+
+.right h1 {
+  font-size: clamp(64px, 9vw, 110px);
+  font-weight: 900;
+  line-height: .9;
+}
+
+/* ================= FEATURES ================= */
+.features {
+  min-height: 100vh;
+  padding: 80px 20px;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.features-header span {
+  color: #0ea5e9;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.features-header h2 {
+  font-size: 42px;
+  margin-top: 10px;
+}
+
+.features-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature {
+  cursor: pointer;
+  padding: 18px;
+  border-radius: 14px;
+  transition: .3s;
+}
+
+.feature:hover {
+  background: #f8f8f8;
+}
+
+.feature.active {
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0,0,0,.08);
+}
+
+.feature p {
+  font-size: 14px;
+  opacity: .7;
+}
+
+.feature-image img {
+  width: 100%;
+  max-width: 520px;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  opacity: .7;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  nav { display: none; }
+  .menu-btn { display: flex; }
+
+  .main {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .right { margin-left: 0; }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .feature-image img {
+    max-height: 240px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://en.wikipedia.org/wiki/Main_Page">HOME</a>
+  <a href="https://en.wikipedia.org/wiki/Product">PRODUCT</a>
+  <a href="https://en.wikipedia.org/wiki/Retail">STORE</a>
+  <a href="https://en.wikipedia.org/wiki/About_Us">ABOUT</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+<header>
+  <div class="logo">LOGO</div>
+
+  <nav>
+    <a href="https://en.wikipedia.org/wiki/Main_Page">HOME</a>
+    <a href="https://en.wikipedia.org/wiki/Product">PRODUCT</a>
+    <a href="https://en.wikipedia.org/wiki/Retail">STORE</a>
+    <a href="https://en.wikipedia.org/wiki/About_Us">ABOUT</a>
+  </nav>
+
+  <!-- MOBILE MENU BUTTON -->
+  <div class="menu-btn" id="menuBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="main">
+  <div class="left">
+    <p>Minimal design that evolves with intelligent experiences.</p>
+    <a href="#features" class="cta">Let’s Get Started</a>
+  </div>
+
+  <div class="center">
+    <div class="circle"></div>
+    <img id="heroImage" class="hero-img">
+  </div>
+
+  <div class="right">
+    <h1>PURE<br>FORM</h1>
+  </div>
+</div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section id="features" class="features">
+  <div class="features-header">
+    <span>AI Mentors. Real Results.</span>
+    <h2>AI That Actually Teaches</h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-list" id="featureList"></div>
+    <div class="feature-image">
+      <img id="featureImage">
+    </div>
+  </div>
+</section>
+
+<div class="site-footer">© 2025 Your Brand</div>
+
+<script>
+/* MOBILE MENU TOGGLE */
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.onclick = () => {
+  mobileMenu.classList.toggle("active");
+};
+
+/* HERO IMAGE ROTATION */
+const heroImages = [
+  "https://images.unsplash.com/photo-1611036831438-300a34247c9a?w=600",
+  "https://images.unsplash.com/photo-1646694505010-6ad7ab241fba?w=600",
+  "https://images.unsplash.com/photo-1757043045413-1a1bec073fd4?w=600"
+];
+
+const heroImg = document.getElementById("heroImage");
+let heroIndex = Math.floor(Math.random() * heroImages.length);
+
+function rotateHero() {
+  heroImg.style.opacity = 0;
+  setTimeout(() => {
+    heroImg.src = heroImages[heroIndex];
+    heroImg.style.opacity = 1;
+    heroIndex = (heroIndex + 1) % heroImages.length;
+  }, 300);
+}
+rotateHero();
+setInterval(rotateHero, 4000);
+
+/* FEATURES */
+const features = [
+  {
+    title: "Smart Learning",
+    description: "Adaptive AI mentors personalized to you.",
+    image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=800"
+  },
+  {
+    title: "Real Feedback",
+    description: "Instant insights that actually help.",
+    image: "https://images.unsplash.com/photo-1556761175-129418cb2dfe?w=800"
+  },
+  {
+    title: "Guided Growth",
+    description: "Step-by-step improvement with clarity.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800"
+  }
+];
+
+let current = 0;
+const list = document.getElementById("featureList");
+const featureImage = document.getElementById("featureImage");
+
+function renderFeatures() {
+  list.innerHTML = "";
+  features.forEach((f, i) => {
+    const div = document.createElement("div");
+    div.className = "feature" + (i === current ? " active" : "");
+    div.innerHTML = `<h3>${f.title}</h3><p>${f.description}</p>`;
+    div.onclick = () => {
+      current = i;
+      updateImage();
+      renderFeatures();
+      mobileMenu.classList.remove("active");
+    };
+    list.appendChild(div);
+  });
+}
+function updateImage() {
+  featureImage.src = features[current].image;
+}
+
+renderFeatures();
+updateImage();
+</script>
+
+</body>
+</html>
