@@ -660,79 +660,65 @@ nav a:hover { color:#000; }
     height: 300px;
   }
 }
-/* ================= COMPACT EXPLORE THEMES ================= */
-.themes-section {
+/* ================= EXPLORE THEMES SLIDER ================= */
+.themes-slider-section {
   background: #eef6ff;
-  padding: 40px 20px; /* 🔥 compact spacing */
+  padding: 40px 0; /* compact top & bottom */
 }
 
-/* HEADER */
-.themes-header {
+.themes-slider-title {
   text-align: center;
-  margin-bottom: 30px; /* 🔥 reduced */
-}
-
-.themes-header h2 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 20px;
 }
 
-.themes-header p {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* GRID */
-.themes-grid {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px; /* 🔥 tighter */
-}
-
-/* COLUMN */
-.theme-column {
+/* SLIDER */
+.themes-slider {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  padding: 0 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* CARD */
-.theme-card {
-  position: relative;
-  height: 260px; /* 🔥 smaller height */
-  border-radius: 20px;
+.themes-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* SLIDE */
+.theme-slide {
+  min-width: 280px;
+  height: 340px;
+  border-radius: 22px;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  position: relative;
+  scroll-snap-align: start;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
 }
 
 /* GLASS BUTTON */
 .use-btn {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
-  padding: 8px 20px;
+  bottom: 16px;
+  right: 16px;
+  padding: 8px 22px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.3);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.4);
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: none;
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
-  .themes-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .theme-card {
-    height: 220px;
+/* DESKTOP */
+@media (min-width: 900px) {
+  .theme-slide {
+    min-width: 360px;
+    height: 380px;
   }
 }
 </style>
@@ -969,44 +955,33 @@ nav a:hover { color:#000; }
 
   </div>
 </section>
-<section class="themes-section">
-  <div class="themes-header">
-    <h2>Explore multiple themes</h2>
-    <p>Choose from beautifully designed layouts</p>
-  </div>
+<section class="themes-slider-section">
+  <h2 class="themes-slider-title">Explore more themes</h2>
 
-  <div class="themes-grid">
-
-    <!-- COLUMN 1 -->
-    <div class="theme-column parallax-left">
-      <div class="theme-card" style="background-image:url('https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=800&q=80')">
-        <a href="https://en.wikipedia.org/wiki/Web_design" target="_blank" class="use-btn">Use me</a>
-      </div>
-      <div class="theme-card" style="background-image:url('https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&w=800&q=80')">
-        <a href="https://en.wikipedia.org/wiki/User_interface_design" target="_blank" class="use-btn">Use me</a>
-      </div>
+  <div class="themes-slider">
+    <div class="theme-slide" style="background-image:url('https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1200&q=80')">
+      <a href="https://en.wikipedia.org/wiki/Web_design" target="_blank" class="use-btn">Use me</a>
     </div>
 
-    <!-- COLUMN 2 -->
-    <div class="theme-column parallax-center">
-      <div class="theme-card" style="background-image:url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=800&q=80')">
-        <a href="https://en.wikipedia.org/wiki/Minimalism" target="_blank" class="use-btn">Use me</a>
-      </div>
-      <div class="theme-card" style="background-image:url('https://images.unsplash.com/photo-1682686581854-5e71f58e7e3f?auto=format&fit=crop&w=800&q=80')">
-        <a href="https://en.wikipedia.org/wiki/Visual_design" target="_blank" class="use-btn">Use me</a>
-      </div>
+    <div class="theme-slide" style="background-image:url('https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&w=1200&q=80')">
+      <a href="https://en.wikipedia.org/wiki/User_interface_design" target="_blank" class="use-btn">Use me</a>
     </div>
 
-    <!-- COLUMN 3 -->
-    <div class="theme-column parallax-right">
-      <div class="theme-card" style="background-image:url('https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?auto=format&fit=crop&w=800&q=80')">
-        <a href="https://en.wikipedia.org/wiki/Typography" target="_blank" class="use-btn">Use me</a>
-      </div>
-      <div class="theme-card" style="background-image:url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?auto=format&fit=crop&w=800&q=80')">
-        <a href="https://en.wikipedia.org/wiki/Color_theory" target="_blank" class="use-btn">Use me</a>
-      </div>
+    <div class="theme-slide" style="background-image:url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1200&q=80')">
+      <a href="https://en.wikipedia.org/wiki/Minimalism" target="_blank" class="use-btn">Use me</a>
     </div>
 
+    <div class="theme-slide" style="background-image:url('https://images.unsplash.com/photo-1682686581854-5e71f58e7e3f?auto=format&fit=crop&w=1200&q=80')">
+      <a href="https://en.wikipedia.org/wiki/Visual_design" target="_blank" class="use-btn">Use me</a>
+    </div>
+
+    <div class="theme-slide" style="background-image:url('https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?auto=format&fit=crop&w=1200&q=80')">
+      <a href="https://en.wikipedia.org/wiki/Typography" target="_blank" class="use-btn">Use me</a>
+    </div>
+
+    <div class="theme-slide" style="background-image:url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?auto=format&fit=crop&w=1200&q=80')">
+      <a href="https://en.wikipedia.org/wiki/Color_theory" target="_blank" class="use-btn">Use me</a>
+    </div>
   </div>
 </section>
 <section class="faq-section">
@@ -1291,18 +1266,6 @@ setInterval(() => {
 }, 5000);
 
 showTestimonial(index);
-</script>
-<script>
-const leftCol = document.querySelector(".parallax-left");
-const centerCol = document.querySelector(".parallax-center");
-const rightCol = document.querySelector(".parallax-right");
-
-window.addEventListener("scroll", () => {
-  const y = window.scrollY;
-  if (leftCol) leftCol.style.transform = `translateY(${y * -0.05}px)`;
-  if (centerCol) centerCol.style.transform = `translateY(${y * -0.025}px)`;
-  if (rightCol) rightCol.style.transform = `translateY(${y * -0.07}px)`;
-});
 </script>
 </body>
 </html>
