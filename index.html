@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,7 @@ nav a {
 
 nav a:hover { color:#000; }
 
-/* MOBILE MENU ICON */
+/* MOBILE MENU BUTTON */
 .menu-btn {
   display: none;
   width: 32px;
@@ -72,7 +71,7 @@ nav a:hover { color:#000; }
   border-radius: 2px;
 }
 
-/* MOBILE MENU PANEL */
+/* MOBILE MENU */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -96,6 +95,18 @@ nav a:hover { color:#000; }
   font-size: 14px;
   letter-spacing: 3px;
   text-decoration: none;
+  color: #111;
+}
+
+/* CLOSE BUTTON */
+.menu-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
   color: #111;
 }
 
@@ -272,6 +283,7 @@ nav a:hover { color:#000; }
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose">✕</button>
   <a href="https://en.wikipedia.org/wiki/Main_Page">HOME</a>
   <a href="https://en.wikipedia.org/wiki/Product">PRODUCT</a>
   <a href="https://en.wikipedia.org/wiki/Retail">STORE</a>
@@ -333,13 +345,13 @@ nav a:hover { color:#000; }
 <div class="site-footer">© 2025 Your Brand</div>
 
 <script>
-/* MOBILE MENU TOGGLE */
+/* MOBILE MENU */
 const menuBtn = document.getElementById("menuBtn");
+const menuClose = document.getElementById("menuClose");
 const mobileMenu = document.getElementById("mobileMenu");
 
-menuBtn.onclick = () => {
-  mobileMenu.classList.toggle("active");
-};
+menuBtn.onclick = () => mobileMenu.classList.add("active");
+menuClose.onclick = () => mobileMenu.classList.remove("active");
 
 /* HERO IMAGE ROTATION */
 const heroImages = [
@@ -400,6 +412,7 @@ function renderFeatures() {
     list.appendChild(div);
   });
 }
+
 function updateImage() {
   featureImage.src = features[current].image;
 }
