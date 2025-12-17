@@ -492,6 +492,173 @@ nav a:hover { color:#000; }
     height: 220px;
   }
 }
+/* ================= FAQ SECTION ================= */
+.faq-section {
+  padding: 80px 20px;
+  background: #f9fafb;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* FAQ ITEM */
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* QUESTION */
+.faq-question {
+  width: 100%;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question span {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+/* ANSWER */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 14px;
+  opacity: 0.75;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0;
+}
+
+/* ACTIVE */
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  padding: 0 0 18px 0;
+}
+
+.faq-item.active .faq-question span {
+  transform: rotate(45deg); /* + → x */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .faq-title {
+    font-size: 26px;
+  }
+}
+/* ================= TESTIMONIALS ================= */
+.testimonials-section {
+  padding: 90px 20px;
+  background: #f8fafc;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+/* LAYOUT */
+.testimonials-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* IMAGE STACK */
+.testimonial-images {
+  position: relative;
+  height: 360px;
+}
+
+.testimonial-images img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 26px;
+  opacity: 0;
+  transform: scale(0.9) translateY(40px) rotate(-4deg);
+  transition: all 0.6s ease;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+}
+
+.testimonial-images img.active {
+  opacity: 1;
+  transform: scale(1) translateY(0) rotate(0);
+  z-index: 5;
+}
+
+/* TEXT */
+.testimonial-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.designation {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-bottom: 24px;
+}
+
+.quote {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* CONTROLS */
+.testimonial-controls {
+  margin-top: 40px;
+  display: flex;
+  gap: 14px;
+}
+
+.testimonial-controls button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.testimonial-controls button:hover {
+  background: #d1d5db;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .testimonials-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .testimonial-images {
+    height: 300px;
+  }
+}
 </style>
 </head>
 
@@ -614,6 +781,51 @@ nav a:hover { color:#000; }
       </div>
     </div>
 
+    <div class="showcase-card"
+      style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900')">
+      <div class="card-actions">
+        <button class="glass-btn view-btn"
+          data-view="https://en.wikipedia.org/wiki/User_interface">
+          View
+        </button>
+        <a class="glass-btn use-btn"
+          href="https://en.wikipedia.org/wiki/User_experience_design"
+          target="_blank">
+          Use Me
+        </a>
+      </div>
+    </div>
+
+    <div class="showcase-card"
+      style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900')">
+      <div class="card-actions">
+        <button class="glass-btn view-btn"
+          data-view="https://en.wikipedia.org/wiki/User_interface">
+          View
+        </button>
+        <a class="glass-btn use-btn"
+          href="https://en.wikipedia.org/wiki/User_experience_design"
+          target="_blank">
+          Use Me
+        </a>
+      </div>
+    </div>
+
+    <div class="showcase-card"
+      style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900')">
+      <div class="card-actions">
+        <button class="glass-btn view-btn"
+          data-view="https://en.wikipedia.org/wiki/User_interface">
+          View
+        </button>
+        <a class="glass-btn use-btn"
+          href="https://en.wikipedia.org/wiki/User_experience_design"
+          target="_blank">
+          Use Me
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -681,6 +893,111 @@ nav a:hover { color:#000; }
 
   </div>
 
+</section>
+<section class="faq-section">
+  <div class="faq-container">
+
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Why do I need a link in bio tool?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        A link in bio tool lets you share all your important links, content, shops, and creations using just one URL across your social profiles.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Is Linktree the original link in bio tool?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        Linktree popularized the concept, but today platforms like Treedell expand beyond links by letting you add blogs, quizzes, and interactive pages.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can you get paid and sell things using a link in bio?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        Yes. You can add affiliate links, product pages, shops, and payment links to start monetizing directly from your bio.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Is it safe to use a link in bio on all social platforms?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        Yes. A single bio link works safely across Instagram, Twitter, YouTube, TikTok, and more without violating platform rules.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What makes Treedell better than other link in bio tools?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        Treedell goes beyond links by letting you create blogs, quizzes, and storefronts — all from one dashboard.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How many links should I have on my bio page?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        Focus on quality, not quantity. 5–10 well-organized links usually perform better than a long cluttered list.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Do I need a website to use a link in bio tool?
+        <span>+</span>
+      </button>
+      <div class="faq-answer">
+        No website needed. Your Treedell page itself works as a mini-website that you can customize anytime.
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="testimonials-section">
+  <h2 class="testimonials-title">What our users say</h2>
+
+  <div class="testimonials-wrapper">
+
+    <!-- IMAGE STACK -->
+    <div class="testimonial-images" id="testimonialImages">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800" />
+      <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800" />
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800" />
+      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800" />
+      <img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?w=800" />
+    </div>
+
+    <!-- TEXT -->
+    <div class="testimonial-content">
+      <h3 id="userName"></h3>
+      <p class="designation" id="userRole"></p>
+      <p class="quote" id="userQuote"></p>
+
+      <div class="testimonial-controls">
+        <button id="prevBtn">←</button>
+        <button id="nextBtn">→</button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <div class="site-footer">© 2025 Your Brand</div>
@@ -778,7 +1095,87 @@ closeBtn.addEventListener("click", () => {
   modal.classList.remove("active");
 });
 </script>
+<script>
+const faqItems = document.querySelectorAll(".faq-item");
 
+faqItems.forEach(item => {
+  const button = item.querySelector(".faq-question");
+
+  button.addEventListener("click", () => {
+    const isOpen = item.classList.contains("active");
+
+    // Close all
+    faqItems.forEach(i => i.classList.remove("active"));
+
+    // Toggle current
+    if (!isOpen) {
+      item.classList.add("active");
+    }
+  });
+});
+</script>
+<script>
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    role: "Content Creator",
+    quote: "Treedell made it incredibly easy to organize all my content in one place.",
+  },
+  {
+    name: "Marcus Johnson",
+    role: "Startup Founder",
+    quote: "Setting up my Treedell page took minutes and replaced my entire website.",
+  },
+  {
+    name: "Isabella Rossi",
+    role: "Digital Marketer",
+    quote: "I love how flexible Treedell is — blogs, links, and quizzes together.",
+  },
+  {
+    name: "Kenji Tanaka",
+    role: "Indie Developer",
+    quote: "The clean design and smooth experience really stand out.",
+  },
+  {
+    name: "Fatima Al-Jamil",
+    role: "Online Educator",
+    quote: "Treedell helped me turn my profile into a powerful learning hub.",
+  }
+];
+
+const images = document.querySelectorAll(".testimonial-images img");
+const nameEl = document.getElementById("userName");
+const roleEl = document.getElementById("userRole");
+const quoteEl = document.getElementById("userQuote");
+
+let index = 0;
+
+function showTestimonial(i) {
+  images.forEach(img => img.classList.remove("active"));
+  images[i].classList.add("active");
+
+  nameEl.textContent = testimonials[i].name;
+  roleEl.textContent = testimonials[i].role;
+  quoteEl.textContent = `"${testimonials[i].quote}"`;
+}
+
+document.getElementById("nextBtn").onclick = () => {
+  index = (index + 1) % testimonials.length;
+  showTestimonial(index);
+};
+
+document.getElementById("prevBtn").onclick = () => {
+  index = (index - 1 + testimonials.length) % testimonials.length;
+  showTestimonial(index);
+};
+
+/* AUTO PLAY */
+setInterval(() => {
+  index = (index + 1) % testimonials.length;
+  showTestimonial(index);
+}, 5000);
+
+showTestimonial(index);
+</script>
 </body>
 </html>
-
