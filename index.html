@@ -276,6 +276,136 @@ nav a:hover { color:#000; }
     max-height: 240px;
   }
 }
+/* ================= SHOWCASE SECTION ================= */
+.showcase-section {
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+/* HEADER */
+.showcase-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.showcase-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background: #ddd;
+  margin: 12px auto 0;
+}
+
+/* CAROUSEL */
+.showcase-track {
+  display: flex;
+  gap: 24px;
+  padding: 0 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.showcase-track::-webkit-scrollbar {
+  display: none;
+}
+
+.showcase-card {
+  min-width: 260px;
+  height: 340px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  scroll-snap-align: center;
+  transform: scale(0.92);
+  transition: transform 0.35s ease;
+}
+
+.showcase-card:hover {
+  transform: scale(1);
+}
+
+/* ACTION BUTTONS */
+.card-actions {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* GLASS BUTTON */
+.glass-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ================= IFRAME MODAL ================= */
+.iframe-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;              /* 🔥 hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.iframe-modal.active {
+  display: flex;
+}
+
+.iframe-box {
+  width: 90%;
+  height: 85%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.iframe-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* CLOSE BUTTON */
+.iframe-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .showcase-card {
+    min-width: 220px;
+    height: 280px;
+  }
+
+  .iframe-box {
+    height: 80%;
+  }
+}
 </style>
 </head>
 
@@ -293,7 +423,7 @@ nav a:hover { color:#000; }
 <!-- ================= HERO ================= -->
 <section class="hero">
 <header>
-  <div class="logo">TreeDell</div>
+  <div class="logo">LOGO</div>
 
   <nav>
     <a href="https://en.wikipedia.org/wiki/Main_Page">HOME</a>
@@ -341,6 +471,73 @@ nav a:hover { color:#000; }
     </div>
   </div>
 </section>
+
+<section class="showcase-section">
+
+  <!-- SECTION HEADING -->
+  <div class="showcase-header">
+    <h2>Start creating your page</h2>
+    <div class="divider"></div>
+  </div>
+
+  <!-- CAROUSEL -->
+  <div class="showcase-track">
+
+    <div class="showcase-card"
+      style="background-image:url('https://images.unsplash.com/photo-1528458965990-428de4b1cb0d?w=900')">
+      <div class="card-actions">
+        <button class="glass-btn view-btn"
+          data-view="https://en.wikipedia.org/wiki/Artificial_intelligence">
+          View
+        </button>
+        <a class="glass-btn use-btn"
+          href="https://en.wikipedia.org/wiki/Machine_learning"
+          target="_blank">
+          Use Me
+        </a>
+      </div>
+    </div>
+
+    <div class="showcase-card"
+      style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900')">
+      <div class="card-actions">
+        <button class="glass-btn view-btn"
+          data-view="https://en.wikipedia.org/wiki/Website">
+          View
+        </button>
+        <a class="glass-btn use-btn"
+          href="https://en.wikipedia.org/wiki/Web_application"
+          target="_blank">
+          Use Me
+        </a>
+      </div>
+    </div>
+
+    <div class="showcase-card"
+      style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900')">
+      <div class="card-actions">
+        <button class="glass-btn view-btn"
+          data-view="https://en.wikipedia.org/wiki/User_interface">
+          View
+        </button>
+        <a class="glass-btn use-btn"
+          href="https://en.wikipedia.org/wiki/User_experience_design"
+          target="_blank">
+          Use Me
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- IFRAME MODAL (HIDDEN BY DEFAULT) -->
+<div class="iframe-modal" id="iframeModal">
+  <div class="iframe-box">
+    <button class="iframe-close" id="iframeClose">✕</button>
+    <iframe id="iframeViewer"></iframe>
+  </div>
+</div>
 
 <div class="site-footer">© 2025 Your Brand</div>
 
@@ -420,7 +617,23 @@ function updateImage() {
 renderFeatures();
 updateImage();
 </script>
+<script>
+const modal = document.getElementById("iframeModal");
+const iframe = document.getElementById("iframeViewer");
+const closeBtn = document.getElementById("iframeClose");
+
+document.querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    iframe.src = btn.dataset.view;
+    modal.classList.add("active");
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  iframe.src = "";
+  modal.classList.remove("active");
+});
+</script>
 
 </body>
 </html>
-
